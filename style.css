@@ -325,3 +325,173 @@ input:focus-visible {
 .clear-btn:hover {
     opacity: 1;
 }
+
+/* ===================== Task list ===================== */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--ink-soft);
+    border: 1px solid rgba(246, 241, 231, 0.07);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    transition: transform 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out), border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+    transform-origin: top center;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -14px rgba(0, 0, 0, 0.55);
+    border-color: rgba(246, 241, 231, 0.14);
+}
+
+.task-item.is-completed {
+    background: rgba(124, 143, 106, 0.06);
+    border-color: rgba(124, 143, 106, 0.14);
+}
+
+/* Checkbox */
+.check-btn {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(246, 241, 231, 0.3);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out), transform 0.15s var(--ease-out);
+    position: relative;
+}
+
+.check-btn:hover {
+    border-color: var(--amber);
+    transform: scale(1.08);
+}
+
+.check-btn svg {
+    width: 13px;
+    height: 13px;
+    color: var(--ink);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.15s var(--ease-out), transform 0.15s var(--ease-out);
+}
+
+.task-item.is-completed .check-btn {
+    background: var(--moss);
+    border-color: var(--moss);
+}
+
+.task-item.is-completed .check-btn svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.task-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-title {
+    font-size: 0.98rem;
+    color: var(--paper);
+    word-break: break-word;
+    transition: color 0.25s var(--ease-out);
+    position: relative;
+}
+
+.task-item.is-completed .task-title {
+    color: var(--paper-dim);
+    text-decoration: line-through;
+    text-decoration-color: var(--moss);
+    text-decoration-thickness: 1.5px;
+}
+
+.task-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--paper-dim);
+    opacity: 0.55;
+    margin-top: 3px;
+    display: block;
+}
+
+.delete-btn {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: transparent;
+    color: var(--paper-dim);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s var(--ease-out), color 0.2s var(--ease-out), transform 0.15s var(--ease-out);
+}
+
+.delete-btn:hover {
+    background: rgba(201, 106, 79, 0.14);
+    color: var(--danger);
+}
+
+.delete-btn:active {
+    transform: scale(0.9);
+}
+
+.delete-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ===================== Empty state ===================== */
+.empty-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 56px 20px 40px;
+    opacity: 0;
+}
+
+.empty-state.is-visible {
+    display: flex;
+}
+
+.empty-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    background: rgba(227, 168, 87, 0.09);
+    border: 1px solid rgba(227, 168, 87, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    margin-bottom: 16px;
+}
+
+.empty-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    color: var(--paper);
+    margin-bottom: 4px;
+}
+
+.empty-sub {
+    font-size: 0.85rem;
+    color: var(--paper-dim);
+}
