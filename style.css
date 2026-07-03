@@ -72,14 +72,14 @@ input:focus-visible {
         url('image/hero-bg.jpeg');
     background-size: cover;
     background-position: center;
-    filter: saturate(0.55) brightness(0.35) contrast(1.05);
+    filter: saturate(0.75) brightness(0.65) contrast(1.08);
     transform: scale(1.05);
 }
 
 .bg-scrim {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(22, 20, 15, 0.86) 0%, rgba(22, 20, 15, 0.94) 40%, var(--ink) 100%);
+    background: linear-gradient(180deg, rgba(22, 20, 15, 0.55) 0%, rgba(22, 20, 15, 0.72) 45%, var(--ink) 100%);
 }
 
 .grain {
@@ -153,21 +153,26 @@ input:focus-visible {
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
     gap: 1px;
     font-family: 'JetBrains Mono', monospace;
+    padding: 0 14px;
 }
 
 .ring-number {
-    font-size: 1.15rem;
+    font-size: 0.92rem;
     font-weight: 500;
     color: var(--paper);
+    line-height: 1;
 }
 
 .ring-percent {
-    font-size: 0.65rem;
+    font-size: 0.58rem;
     color: var(--paper-dim);
+    line-height: 1;
+    align-self: flex-start;
+    margin-top: 1px;
 }
 
 /* ===================== Input card ===================== */
