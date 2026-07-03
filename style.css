@@ -242,3 +242,86 @@ input:focus-visible {
     padding: 6px 4px 0;
     font-family: 'JetBrains Mono', monospace;
 }
+
+/* ===================== Controls row (filters + counter) ===================== */
+.controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 22px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    opacity: 0;
+}
+
+.filters {
+    position: relative;
+    display: inline-flex;
+    gap: 2px;
+    background: rgba(246, 241, 231, 0.05);
+    border: 1px solid rgba(246, 241, 231, 0.07);
+    padding: 4px;
+    border-radius: 999px;
+}
+
+.filter-btn {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    color: var(--paper-dim);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 6px 15px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 0.25s var(--ease-out);
+}
+
+.filter-btn.is-active {
+    color: var(--ink);
+}
+
+.filter-pill {
+    position: absolute;
+    z-index: 1;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    width: 56px;
+    background: var(--amber);
+    border-radius: 999px;
+    transition: transform 0.35s var(--ease-out), width 0.35s var(--ease-out);
+}
+
+.counter-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--paper-dim);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.counter-line span {
+    color: var(--paper);
+    font-weight: 500;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    color: var(--danger);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.clear-btn:hover {
+    opacity: 1;
+}
