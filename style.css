@@ -495,3 +495,64 @@ input:focus-visible {
     font-size: 0.85rem;
     color: var(--paper-dim);
 }
+
+/* ===================== Footer ===================== */
+.footer-line {
+    border-top: 1px solid rgba(246, 241, 231, 0.07);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--paper-dim);
+    text-align: center;
+    opacity: 0;
+}
+
+.footer-line span {
+    color: var(--paper);
+}
+
+/* ===================== Utility states injected by JS ===================== */
+.shake {
+    animation: shakeErr 0.4s var(--ease-out);
+}
+
+@keyframes shakeErr {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    75% {
+        transform: translateX(6px);
+    }
+}
+
+/* Mobile refinements */
+@media (max-width: 480px) {
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .ring-wrap {
+        width: 72px;
+        height: 72px;
+    }
+
+    .ring-svg {
+        width: 72px;
+        height: 72px;
+    }
+
+    .task-item {
+        padding: 12px 12px;
+        gap: 10px;
+    }
+
+    .add-btn span {
+        font-size: 0.85rem;
+    }
+}
