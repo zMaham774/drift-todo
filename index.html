@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drift - a quieter to-do list</title>
+    <meta name="description" content="A calm, focused to-do list." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <!-- Motion & GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="min-h-screen">
+
+    <!-- Ambient background -->
+    <div class="bg-scene" aria-hidden="true">
+        <div class="bg-image"></div>
+        <div class="bg-scrim"></div>
+        <div class="grain"></div>
+    </div>
+
+    <div class="relative z-10 min-h-screen flex flex-col items-center px-5 sm:px-8 py-10 sm:py-16">
+
+        <!-- ============ HEADER ============ -->
+        <header class="w-full max-w-xl mb-10 sm:mb-12" id="siteHeader">
+            <div class="flex items-start justify-between gap-6">
+                <div class="header-text">
+                    <p class="eyebrow" id="dateLine">Loading…</p>
+                    <h1 class="title">Drift</h1>
+                    <p class="subtitle" id="subtitle">A short list. Done well beats done all.</p>
+                </div>
+
+                <!-- Signature element: progress ring -->
+                <div class="ring-wrap" role="img" aria-label="Task completion progress">
+                    <svg class="ring-svg" viewBox="0 0 120 120" width="88" height="88">
+                        <circle class="ring-track" cx="60" cy="60" r="52"></circle>
+                        <circle class="ring-progress" id="ringProgress" cx="60" cy="60" r="52"></circle>
+                    </svg>
+                    <div class="ring-center">
+                        <span class="ring-number" id="ringPercent">0</span><span class="ring-percent">%</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="w-full max-w-xl flex-1 flex flex-col">
+
+            <!-- ============ TASK INPUT ============ -->
+            <form id="taskForm" class="input-card" novalidate>
+                <div class="input-row">
+                    <button type="button" class="add-icon-btn" id="addIconBtn" aria-hidden="true" tabindex="-1">
+                        <i data-lucide="plus" class="w-5 h-5"></i>
+                    </button>
+                    <label for="taskInput" class="sr-only">Add a new task</label>
+                    <input type="text" id="taskInput" name="taskInput" placeholder="What's next?" autocomplete="off"
+                        maxlength="140" aria-describedby="inputError" />
+                    <button type="submit" class="add-btn" id="addBtn">
+                        <span>Add</span>
+                    </button>
+                </div>
+                <p id="inputError" class="input-error" role="alert" aria-live="polite"></p>
+            </form>
+
+            <!-- ============ FILTERS + COUNTER ============ -->
+            <div class="controls-row">
+                <div class="filters" role="tablist" aria-label="Filter tasks">
+                    <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+                    <button class="filter-btn" data-filter="active" role="tab" aria-selected="false">Active</button>
+                    <button class="filter-btn" data-filter="completed" role="tab" aria-selected="false">Done</button>
+                    <span class="filter-pill" id="filterPill" aria-hidden="true"></span>
+                </div>
+
+                <div class="counter-line" aria-live="polite">
+                    <span id="remainingCount">0</span> left
+                    <button type="button" id="clearCompletedBtn" class="clear-btn" hidden>Clear done</button>
+                </div>
+            </div>
+
+            <!-- ============ TASK LIST ============ -->
+            <ul id="taskList" class="task-list" aria-label="Task list"></ul>
+
+            <!-- ============ EMPTY STATE ============ -->
+            <div id="emptyState" class="empty-state">
+                <div class="empty-icon">
+                    <i data-lucide="feather" class="w-6 h-6"></i>
+                </div>
+                <p class="empty-title">Nothing here yet</p>
+                <p class="empty-sub">Add your first task above, keep it small.</p>
+            </div>
+
+        </main>
+
+        <footer class="w-full max-w-xl mt-10 pt-6 footer-line">
+            <p><span id="totalCount">0</span> total · <span id="completedCount">0</span> completed · saved on this
+                device</p>
+        </footer>
+    </div>
+
+    <!-- Live region for screen-reader announcements -->
+    <div id="srAnnounce" class="sr-only" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
